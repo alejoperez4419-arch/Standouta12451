@@ -1,90 +1,145 @@
-/* =========================
-   RESET
-========================= */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:'Russo One',sans-serif;
+    -webkit-tap-highlight-color:transparent;
 }
 
 :root{
-    --cyan:#00eaff;
-    --blue:#0099ff;
-    --green:#00ff88;
-    --yellow:#ffd700;
-    --orange:#ff9800;
-    --purple:#9d4dff;
-    --dark:#05070d;
-    --card:#101827;
-    --card2:#182235;
+
+    --bg:#06111d;
+    --panel:rgba(8,18,35,.82);
+    --panel2:rgba(12,26,48,.88);
+
+    --cyan:#00f5ff;
+    --blue:#1d7bff;
+    --green:#52ff83;
+    --yellow:#ffe600;
     --white:#ffffff;
+
+    --radius:24px;
+    --border:rgba(0,245,255,.28);
+
 }
 
-/* =========================
-   BODY
-========================= */
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
 body{
-    font-family:'Russo One',sans-serif;
-    min-height:100vh;
+    background:#020812;
     overflow-x:hidden;
-    background:#000;
     color:#fff;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     position:relative;
 }
 
-/* =========================
-   FOOTBALL BACKGROUND
-========================= */
+/* =======================================================
+   BACKGROUND
+======================================================= */
+
 .background-overlay{
     position:fixed;
     inset:0;
+    overflow:hidden;
+    z-index:-5;
+
     background:
-    linear-gradient(
-        rgba(0,0,0,.78),
-        rgba(0,0,0,.78)
-    ),
-    url("background.jpg");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    z-index:-2;
+    radial-gradient(circle at 20% 20%,rgba(0,255,255,.18),transparent 30%),
+    radial-gradient(circle at 80% 30%,rgba(0,140,255,.18),transparent 35%),
+    radial-gradient(circle at 50% 80%,rgba(0,255,120,.12),transparent 35%),
+    linear-gradient(180deg,#04101c,#020812,#071425);
 }
 
+/* líneas tipo estadio */
+
 .background-overlay::before{
+
+    content:"";
+    position:absolute;
+    inset:-50%;
+
+    background:
+    repeating-linear-gradient(
+    90deg,
+    transparent 0 58px,
+    rgba(0,255,255,.03) 59px,
+    transparent 60px);
+
+    animation:gridMove 20s linear infinite;
+}
+
+/* luces suaves */
+
+.background-overlay::after{
+
     content:"";
     position:absolute;
     inset:0;
+
     background:
-    radial-gradient(circle at top left,
-    rgba(0,234,255,.25),
-    transparent 40%),
-    radial-gradient(circle at bottom right,
-    rgba(0,255,136,.20),
-    transparent 40%),
-    radial-gradient(circle at center,
-    rgba(157,77,255,.12),
-    transparent 60%);
+    radial-gradient(circle at 25% 25%,rgba(0,255,255,.22),transparent 18%),
+    radial-gradient(circle at 75% 75%,rgba(0,150,255,.18),transparent 18%);
+
+    animation:lights 8s ease-in-out infinite alternate;
 }
 
-/* =========================
-   MAIN CONTAINER
-========================= */
+@keyframes gridMove{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(60px);
+    }
+
+}
+
+@keyframes lights{
+
+    from{
+        transform:scale(1);
+        opacity:.6;
+    }
+
+    to{
+        transform:scale(1.15);
+        opacity:1;
+    }
+
+}
+
+/* =======================================================
+   CONTAINER
+======================================================= */
+
 .container{
+
     width:100%;
-    max-width:1200px;
-    padding:20px;
+    min-height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
+    padding:25px;
 }
 
-/* =========================
-   SECTIONS
-========================= */
+/* =======================================================
+   SECTION
+======================================================= */
+
 .section{
+
     display:none;
     width:100%;
     justify-content:center;
@@ -93,337 +148,397 @@ body{
 
 .section.active{
     display:flex;
-    animation:fadeIn .5s ease;
+    animation:fade .35s ease;
 }
 
-@keyframes fadeIn{
+@keyframes fade{
+
     from{
         opacity:0;
         transform:translateY(20px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
+
 }
 
-/* =========================
-   CONTENT BOX
-========================= */
+/* =======================================================
+   PANEL
+======================================================= */
+
 .content-box{
-    width:100%;
-    max-width:500px;
-    background:rgba(10,15,25,.92);
-    border:2px solid rgba(0,234,255,.25);
-    backdrop-filter:blur(10px);
-    border-radius:25px;
-    padding:30px;
-    text-align:center;
+
+    width:min(95vw,520px);
+
+    background:linear-gradient(180deg,var(--panel),var(--panel2));
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    backdrop-filter:blur(12px);
+
     box-shadow:
-    0 0 20px rgba(0,234,255,.25),
-    0 0 50px rgba(0,153,255,.15);
+    0 0 35px rgba(0,255,255,.18),
+    inset 0 0 20px rgba(255,255,255,.04);
+
+    padding:35px 25px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
 }
 
 .content-box.big{
-    max-width:1000px;
+    width:min(95vw,760px);
 }
 
 .logo{
-    width:220px;
-    max-width:80%;
-    margin-bottom:25px;
+
+    width:min(270px,75%);
+    object-fit:contain;
+
     filter:
-    drop-shadow(0 0 15px rgba(0,234,255,.8))
-    drop-shadow(0 0 35px rgba(0,153,255,.5));
+    drop-shadow(0 0 18px rgba(0,255,255,.55));
+
 }
 
-/* =========================
-   TITLES
-========================= */
+/* =======================================================
+   TEXT
+======================================================= */
+
 h2{
-    color:var(--yellow);
-    margin-bottom:20px;
-    text-transform:uppercase;
+
+    color:var(--cyan);
+
+    text-align:center;
+
+    font-size:clamp(22px,3vw,32px);
+
     letter-spacing:1px;
-    text-shadow:
-    0 0 10px rgba(255,215,0,.8),
-    0 0 20px rgba(255,215,0,.4);
+
+    text-shadow:0 0 14px rgba(0,255,255,.5);
+
 }
 
 p{
-    color:#d8d8d8;
+
+    color:#d8ecff;
+    text-align:center;
+    line-height:1.5;
+
 }
 
-/* =========================
+/* =======================================================
    INPUT
-========================= */
+======================================================= */
+
 input{
+
     width:100%;
-    height:55px;
-    border:none;
-    outline:none;
-    border-radius:14px;
-    margin-top:10px;
-    margin-bottom:20px;
-    text-align:center;
-    font-size:17px;
-    font-family:'Russo One',sans-serif;
+
+    height:58px;
+
+    border-radius:16px;
+
+    border:2px solid rgba(0,255,255,.25);
+
+    background:#081628;
+
     color:#fff;
-    background:#111b2e;
-    border:2px solid rgba(0,234,255,.3);
-    transition:.3s;
+
+    text-align:center;
+
+    font-size:18px;
+
+    outline:none;
+
+    transition:.25s;
 }
 
 input:focus{
+
     border-color:var(--cyan);
-    box-shadow:0 0 20px rgba(0,234,255,.5);
+
+    box-shadow:0 0 18px rgba(0,255,255,.35);
+
 }
 
-/* =========================
-   BUTTONS
-========================= */
+input::placeholder{
+
+    color:#8ca9c6;
+
+}
+
+/* =======================================================
+   BUTTON
+======================================================= */
+
 button{
+
+    width:100%;
+    max-width:300px;
+
+    height:58px;
+
     border:none;
     cursor:pointer;
-    width:100%;
-    height:55px;
-    border-radius:15px;
-    font-family:'Russo One',sans-serif;
-    font-size:16px;
-    color:#fff;
-    text-transform:uppercase;
-    letter-spacing:1px;
 
-    background:linear-gradient(
-        135deg,
-        var(--cyan),
-        var(--blue),
-        var(--purple)
-    );
+    border-radius:16px;
+
+    color:#06111d;
+
+    font-size:18px;
+
+    background:
+    linear-gradient(90deg,
+    var(--green),
+    var(--cyan));
 
     transition:.25s;
+
     box-shadow:
-    0 0 15px rgba(0,234,255,.4),
-    0 0 35px rgba(0,153,255,.2);
+    0 0 18px rgba(0,255,255,.35);
+
 }
 
 button:hover{
-    transform:translateY(-3px) scale(1.02);
+
+    transform:translateY(-3px);
+
     box-shadow:
-    0 0 20px rgba(0,234,255,.7),
-    0 0 45px rgba(0,153,255,.4);
+    0 0 28px rgba(0,255,255,.6);
+
 }
 
 button:active{
-    transform:scale(.98);
+
+    transform:scale(.96);
+
 }
 
-/* =========================
-   CARDS GRID
-========================= */
+/* =======================================================
+   GRID
+======================================================= */
+
 .cards-grid{
+
+    width:100%;
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-    gap:15px;
-    margin:25px 0;
+
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+
+    gap:18px;
+
 }
 
-/* =========================
+/* =======================================================
    CARD
-========================= */
+======================================================= */
+
 .card{
-    background:linear-gradient(
-    180deg,
-    rgba(24,34,53,.95),
-    rgba(10,15,25,.95));
+
+    background:rgba(255,255,255,.03);
 
     border:2px solid rgba(255,255,255,.08);
+
     border-radius:18px;
+
     padding:12px;
-    text-align:center;
+
     cursor:pointer;
+
     transition:.25s;
-    overflow:hidden;
-    position:relative;
-}
 
-.card::before{
-    content:"";
-    position:absolute;
-    top:-100%;
-    left:-100%;
-    width:250%;
-    height:250%;
-    background:
-    linear-gradient(
-    45deg,
-    transparent,
-    rgba(255,255,255,.06),
-    transparent);
-    transform:rotate(25deg);
-}
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
-.card:hover{
-    transform:translateY(-5px);
-    border-color:var(--cyan);
-    box-shadow:
-    0 0 15px rgba(0,234,255,.4),
-    0 0 30px rgba(0,234,255,.15);
-}
+    min-height:170px;
 
-.card.selected{
-    border-color:var(--green);
-    background:
-    linear-gradient(
-    180deg,
-    rgba(0,255,136,.18),
-    rgba(24,34,53,.95));
-    box-shadow:
-    0 0 15px rgba(0,255,136,.6),
-    0 0 35px rgba(0,255,136,.25);
 }
 
 .card img{
+
     width:100%;
-    max-width:140px;
-    display:block;
-    margin:auto;
+    max-width:70%;
+
     object-fit:contain;
+
+    transition:.25s;
+
+    filter:drop-shadow(0 0 12px rgba(0,255,255,.3));
+
 }
 
-/* =========================
-   SPINNER
-========================= */
-.spinner{
-    width:85px;
-    height:85px;
-    margin:25px auto;
-    border-radius:50%;
-    border:8px solid rgba(255,255,255,.15);
-    border-top-color:var(--cyan);
-    border-right-color:var(--green);
-    animation:spin .8s linear infinite;
+.card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:var(--cyan);
+
     box-shadow:
-    0 0 20px rgba(0,234,255,.3);
+    0 0 22px rgba(0,255,255,.35);
+
+}
+
+.card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.card.selected{
+
+    border-color:var(--yellow);
+
+    background:rgba(255,230,0,.12);
+
+    box-shadow:
+    0 0 25px rgba(255,230,0,.45);
+
+}
+
+.card.selected img{
+
+    filter:
+    drop-shadow(0 0 18px rgba(255,230,0,.75));
+
+}
+
+/* =======================================================
+   SPINNER
+======================================================= */
+
+.spinner{
+
+    width:80px;
+    height:80px;
+
+    border-radius:50%;
+
+    border:6px solid rgba(255,255,255,.08);
+
+    border-top:6px solid var(--cyan);
+
+    animation:spin .8s linear infinite;
+
 }
 
 @keyframes spin{
+
     to{
         transform:rotate(360deg);
     }
+
 }
 
-/* =========================
-   LOADING TEXT
-========================= */
-#loadingText{
-    color:var(--cyan);
-    margin-top:10px;
-    font-size:18px;
-    text-shadow:0 0 10px rgba(0,234,255,.8);
-}
+/* =======================================================
+   RESPONSIVE
+======================================================= */
 
-/* =========================
-   FINAL REWARDS
-========================= */
-#finalCards .card{
-    cursor:default;
-}
-
-#finalCards .card:hover{
-    transform:none;
-}
-
-/* =========================
-   SCROLLBAR
-========================= */
-::-webkit-scrollbar{
-    width:8px;
-}
-
-::-webkit-scrollbar-thumb{
-    background:var(--cyan);
-    border-radius:10px;
-}
-
-::-webkit-scrollbar-track{
-    background:#05070d;
-}
-
-/* =========================
-   TABLET
-========================= */
 @media(max-width:768px){
 
-    .container{
-        padding:12px;
-    }
-
     .content-box{
-        padding:22px;
-    }
 
-    .cards-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-    }
+        padding:25px 18px;
 
-    .card img{
-        max-width:110px;
-    }
-
-    h2{
-        font-size:20px;
-    }
-
-    button{
-        height:52px;
-    }
-}
-
-/* =========================
-   MOBILE
-========================= */
-@media(max-width:480px){
-
-    .content-box{
-        padding:18px;
         border-radius:20px;
-    }
 
-    .logo{
-        width:180px;
     }
 
     .cards-grid{
+
         grid-template-columns:repeat(2,1fr);
-        gap:10px;
+
+        gap:14px;
+
     }
 
     .card{
-        padding:10px;
+
+        min-height:150px;
+
     }
 
     .card img{
-        max-width:95px;
-    }
 
-    h2{
-        font-size:18px;
-    }
+        max-width:80%;
 
-    input{
-        height:50px;
-        font-size:15px;
     }
 
     button{
-        height:50px;
-        font-size:14px;
+
+        height:54px;
+        font-size:17px;
+
     }
 
-    .spinner{
-        width:70px;
-        height:70px;
+}
+
+@media(max-width:430px){
+
+    .container{
+
+        padding:14px;
+
     }
+
+    .content-box{
+
+        width:100%;
+        padding:20px 15px;
+
+    }
+
+    .cards-grid{
+
+        gap:12px;
+
+    }
+
+    .card{
+
+        min-height:138px;
+        padding:10px;
+
+    }
+
+    .card img{
+
+        max-width:72px;
+
+    }
+
+    h2{
+
+        font-size:22px;
+
+    }
+
+    input{
+
+        height:54px;
+        font-size:16px;
+
+    }
+
+}
+
+/* Reduce animaciones en dispositivos que lo prefieran */
+
+@media(prefers-reduced-motion:reduce){
+
+    *{
+        animation:none!important;
+        transition:none!important;
+    }
+
 }
