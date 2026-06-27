@@ -10,29 +10,24 @@
 
 :root {
 
-    --bg: #06111d;
-    --panel: rgba(8, 18, 35, .82);
-    --panel2: rgba(12, 26, 48, .88);
+    --bg: #120b03;
+    --panel: rgba(28, 16, 4, .88);
+    --panel2: rgba(48, 25, 4, .92);
 
-    --cyan: #00f5ff;
-    --blue: #1d7bff;
-    --green: #52ff83;
-    --yellow: #ffe600;
+    --cyan: #ffb300;
+    --blue: #ff7b00;
+    --green: #ffd54a;
+    --yellow: #fff176;
     --white: #ffffff;
 
     --radius: 24px;
-    --border: rgba(0, 245, 255, .28);
+    --border: rgba(255, 179, 0, .30);
 
 }
 
 html,
 body {
-    width: 100%;
-    min-height: 100%;
-}
-
-body {
-    background: #020812;
+    background: #080401;
     overflow-x: hidden;
     color: #fff;
 
@@ -79,19 +74,48 @@ body {
 
 /* luces suaves */
 
-.background-overlay::after {
-
-    content: "";
-    position: absolute;
+.background-overlay {
+    position: fixed;
     inset: 0;
+    overflow: hidden;
+    z-index: -5;
 
     background:
-        radial-gradient(circle at 25% 25%, rgba(0, 255, 255, .22), transparent 18%),
-        radial-gradient(circle at 75% 75%, rgba(0, 150, 255, .18), transparent 18%);
-
-    animation: lights 8s ease-in-out infinite alternate;
+        radial-gradient(circle at 20% 20%, rgba(255,185,0,.20), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(255,110,0,.18), transparent 35%),
+        radial-gradient(circle at 50% 80%, rgba(255,220,120,.12), transparent 35%),
+        linear-gradient(180deg,#120701,#080401,#1d0d02);
 }
 
+.background-overlay::before{
+
+    content:"";
+    position:absolute;
+    inset:-50%;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 58px,
+            rgba(255,190,0,.04) 59px,
+            transparent 60px
+        );
+
+    animation:gridMove 20s linear infinite;
+}
+
+.background-overlay::after{
+
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(circle at 25% 25%, rgba(255,185,0,.25), transparent 18%),
+        radial-gradient(circle at 75% 75%, rgba(255,110,0,.18), transparent 18%);
+
+    animation:lights 8s ease-in-out infinite alternate;
+}
 @keyframes gridMove {
 
     from {
