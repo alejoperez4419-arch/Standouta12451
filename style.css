@@ -61,12 +61,10 @@ body {
     z-index: -5;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(0, 15, 80, .60),
             rgba(0, 0, 0, .35) 45%,
-            rgba(255, 0, 100, .30)
-        ),
+            rgba(255, 0, 100, .30)),
         url("background.jpg") center center / cover no-repeat;
 
     filter: blur(2px);
@@ -85,23 +83,19 @@ body {
     inset: 0;
 
     background:
-        linear-gradient(
-            125deg,
+        linear-gradient(125deg,
             transparent 0%,
             transparent 30%,
             rgba(0, 70, 255, .25) 30.5%,
             rgba(0, 70, 255, .25) 34%,
-            transparent 34.5%
-        ),
+            transparent 34.5%),
 
-        linear-gradient(
-            305deg,
+        linear-gradient(305deg,
             transparent 0%,
             transparent 65%,
             rgba(255, 0, 140, .25) 65.5%,
             rgba(255, 0, 140, .25) 70%,
-            transparent 70.5%
-        );
+            transparent 70.5%);
 
 }
 
@@ -116,23 +110,17 @@ body {
     inset: 0;
 
     background:
-        radial-gradient(
-            circle at 50% 30%,
+        radial-gradient(circle at 50% 30%,
             rgba(0, 217, 255, .18),
-            transparent 35%
-        ),
+            transparent 35%),
 
-        radial-gradient(
-            circle at 20% 80%,
+        radial-gradient(circle at 20% 80%,
             rgba(182, 255, 0, .15),
-            transparent 30%
-        ),
+            transparent 30%),
 
-        radial-gradient(
-            circle at 90% 80%,
+        radial-gradient(circle at 90% 80%,
             rgba(255, 0, 127, .20),
-            transparent 30%
-        );
+            transparent 30%);
 
     pointer-events: none;
 }
@@ -184,16 +172,14 @@ body {
         opacity: 0;
 
         transform:
-            translateY(20px)
-            scale(.97);
+            translateY(20px) scale(.97);
     }
 
     to {
         opacity: 1;
 
         transform:
-            translateY(0)
-            scale(1);
+            translateY(0) scale(1);
     }
 
 }
@@ -216,11 +202,9 @@ body {
     text-align: center;
 
     background:
-        linear-gradient(
-            145deg,
+        linear-gradient(145deg,
             rgba(7, 18, 65, .96),
-            rgba(2, 4, 20, .96)
-        );
+            rgba(2, 4, 20, .96));
 
     border: 3px solid var(--pink);
 
@@ -312,12 +296,10 @@ body {
     margin: 0 auto 15px;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             var(--blue),
             var(--pink),
-            var(--lime)
-        );
+            var(--lime));
 
     transform: skewX(-25deg);
 
@@ -343,11 +325,7 @@ body {
 
     filter:
 
-        drop-shadow(0 0 8px #ffffff)
-
-        drop-shadow(0 0 18px #0066ff)
-
-        drop-shadow(0 0 30px #ff007f);
+        drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 18px #0066ff) drop-shadow(0 0 30px #ff007f);
 
     z-index: 2;
 }
@@ -414,11 +392,9 @@ input {
     border: 2px solid #1747ff;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             #050b25,
-            #07143a
-        );
+            #07143a);
 
     color: white;
 
@@ -488,11 +464,9 @@ button {
     color: #050510;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             var(--lime),
-            #efff00
-        );
+            #efff00);
 
     box-shadow:
 
@@ -519,12 +493,10 @@ button::before {
     height: 100%;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             transparent,
-            rgba(255,255,255,.7),
-            transparent
-        );
+            rgba(255, 255, 255, .7),
+            transparent);
 
     transform: skewX(-25deg);
 
@@ -540,8 +512,7 @@ button:hover::before {
 button:hover {
 
     transform:
-        translateY(-3px)
-        skewX(-2deg);
+        translateY(-3px) skewX(-2deg);
 
     box-shadow:
 
@@ -605,11 +576,9 @@ button:active {
 
     background:
 
-        linear-gradient(
-            145deg,
+        linear-gradient(145deg,
             rgba(8, 25, 80, .96),
-            rgba(4, 5, 25, .98)
-        );
+            rgba(4, 5, 25, .98));
 
     border: 2px solid #1747ff;
 
@@ -638,12 +607,10 @@ button:active {
     left: -25%;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             transparent,
             #003cff66,
-            transparent
-        );
+            transparent);
 
     transform: rotate(-12deg);
 
@@ -668,12 +635,10 @@ button:active {
     left: 0;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             var(--blue),
             var(--pink),
-            var(--lime)
-        );
+            var(--lime));
 
     box-shadow:
         0 0 10px var(--pink);
@@ -683,8 +648,7 @@ button:active {
 .card:hover {
 
     transform:
-        translateY(-7px)
-        scale(1.025);
+        translateY(-7px) scale(1.025);
 
     border-color: var(--pink);
 
@@ -717,12 +681,10 @@ button:active {
 .card.selected::after {
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             var(--lime),
             #ffffff,
-            var(--lime)
-        );
+            var(--lime));
 
     box-shadow:
         0 0 15px var(--lime);
@@ -746,8 +708,7 @@ button:active {
     z-index: 2;
 
     filter:
-        drop-shadow(0 5px 5px #000)
-        drop-shadow(0 0 10px #0066ff44);
+        drop-shadow(0 5px 5px #000) drop-shadow(0 0 10px #0066ff44);
 
     transition: .3s;
 }
@@ -756,12 +717,10 @@ button:active {
 .card:hover img {
 
     transform:
-        scale(1.06)
-        translateY(-3px);
+        scale(1.06) translateY(-3px);
 
     filter:
-        drop-shadow(0 5px 5px #000)
-        drop-shadow(0 0 15px #ff007f88);
+        drop-shadow(0 5px 5px #000) drop-shadow(0 0 15px #ff007f88);
 }
 
 
@@ -779,7 +738,7 @@ button:active {
 
     border-radius: 50%;
 
-    border: 7px solid rgba(255,255,255,.12);
+    border: 7px solid rgba(255, 255, 255, .12);
 
     border-top-color: var(--pink);
 
@@ -814,11 +773,7 @@ button:active {
 
     filter:
 
-        drop-shadow(0 0 8px #ffffff)
-
-        drop-shadow(0 0 15px var(--lime))
-
-        drop-shadow(0 0 25px var(--pink));
+        drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 15px var(--lime)) drop-shadow(0 0 25px var(--pink));
 }
 
 
