@@ -1,43 +1,23 @@
-
-/* =========================================================
-   ADMIN2027 — LIGHT GAMER UI
-   Responsive PC + Mobile
-   ========================================================= */
+/* =====================================================
+   ADMIN2027 - GAMER / EFOOTBALL STYLE
+   Fondo base: #000096
+   ===================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
-/* =========================
-   VARIABLES
-   ========================= */
-
 :root {
-    --blue: #087cff;
-    --blue-dark: #0057c8;
-    --cyan: #00c8ff;
-    --yellow: #ffd600;
-
-    --text: #172033;
-    --text-light: #64748b;
-
+    --blue: #000096;
+    --blue-light: #1111d8;
+    --blue-dark: #00005c;
+    --cyan: #00eaff;
+    --yellow: #ffe900;
     --white: #ffffff;
-    --light: #f4f8fc;
-    --light-blue: #eaf5ff;
-
-    --border: #dbe7f3;
-
-    --shadow:
-        0 20px 50px rgba(31, 89, 145, 0.12);
-
-    --shadow-small:
-        0 8px 25px rgba(31, 89, 145, 0.12);
-
-    --radius: 22px;
+    --black: #03030b;
 }
-
 
 /* =========================
    RESET
-   ========================= */
+========================= */
 
 * {
     margin: 0;
@@ -52,66 +32,82 @@ body {
 }
 
 body {
-    font-family: 'Russo One', sans-serif;
-    color: var(--text);
-    background: #eef6fc;
+    min-height: 100vh;
     overflow-x: hidden;
+    font-family: 'Russo One', sans-serif;
+    color: var(--white);
+    background: var(--blue);
 }
 
-
-/* =========================
-   BACKGROUND
-   ========================= */
+/* =====================================================
+   FONDO GAMER
+===================================================== */
 
 .background-overlay {
     position: fixed;
     inset: 0;
-    z-index: -2;
+    z-index: 0;
+    pointer-events: none;
 
     background:
-        radial-gradient(circle at 15% 15%,
-            rgba(0, 200, 255, 0.18),
-            transparent 30%),
-        radial-gradient(circle at 85% 20%,
-            rgba(8, 124, 255, 0.16),
-            transparent 30%),
-        radial-gradient(circle at 50% 100%,
-            rgba(255, 214, 0, 0.10),
-            transparent 35%),
-        linear-gradient(135deg,
-            #f9fcff 0%,
-            #eef7ff 50%,
-            #e8f3fc 100%);
+        radial-gradient(
+            ellipse at 50% -20%,
+            rgba(0, 234, 255, 0.30),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 0% 50%,
+            rgba(30, 30, 255, 0.35),
+            transparent 40%
+        ),
+        radial-gradient(
+            ellipse at 100% 80%,
+            rgba(0, 0, 60, 0.45),
+            transparent 45%
+        ),
+        repeating-linear-gradient(
+            -35deg,
+            transparent 0,
+            transparent 70px,
+            rgba(255, 255, 255, 0.025) 71px,
+            rgba(255, 255, 255, 0.025) 73px
+        );
+
+    background-color: var(--blue);
 }
-
-
-/* Decorative gamer grid */
 
 .background-overlay::before {
     content: "";
     position: absolute;
-    inset: 0;
-
-    background-image:
-        linear-gradient(rgba(8, 124, 255, 0.035) 1px,
-            transparent 1px),
-        linear-gradient(90deg,
-            rgba(8, 124, 255, 0.035) 1px,
-            transparent 1px);
-
-    background-size: 45px 45px;
-
-    mask-image: linear-gradient(to bottom,
-            black,
-            transparent 90%);
+    width: 600px;
+    height: 600px;
+    left: -300px;
+    top: 10%;
+    border-radius: 50%;
+    background: rgba(0, 234, 255, 0.08);
+    filter: blur(100px);
 }
 
+.background-overlay::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    right: -250px;
+    bottom: -200px;
+    border-radius: 50%;
+    background: rgba(0, 0, 70, 0.5);
+    filter: blur(80px);
+}
 
-/* =========================
-   MAIN CONTAINER
-   ========================= */
+/* =====================================================
+   CONTAINER
+===================================================== */
 
 .container {
+    position: relative;
+    z-index: 2;
+
     width: 100%;
     min-height: 100vh;
 
@@ -122,540 +118,479 @@ body {
     padding: 25px;
 }
 
-
-/* =========================
+/* =====================================================
    SECTIONS
-   ========================= */
+===================================================== */
 
 .section {
     display: none;
 
     width: 100%;
-    max-width: 1050px;
+    min-height: 100vh;
 
-    animation: sectionIn 0.45s ease;
-}
-
-.section.active {
-    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-@keyframes sectionIn {
+.section.active {
+    display: flex;
+    animation: sectionShow 0.35s ease-out;
+}
+
+@keyframes sectionShow {
     from {
         opacity: 0;
-        transform: translateY(18px) scale(0.98);
+        transform: translateY(15px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
 }
 
-
-/* =========================
+/* =====================================================
    CONTENT BOX
-   ========================= */
+===================================================== */
 
 .content-box {
-    width: 100%;
-    max-width: 500px;
-
-    background: rgba(255, 255, 255, 0.96);
-
-    border: 1px solid rgba(255, 255, 255, 0.9);
-
-    border-radius: var(--radius);
-
-    padding: 42px 35px;
-
-    box-shadow: var(--shadow);
-
-    text-align: center;
-
     position: relative;
 
-    overflow: hidden;
+    width: 450px;
+    max-width: 100%;
+
+    padding: 38px 32px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(0, 0, 55, 0.96),
+        rgba(0, 0, 110, 0.96)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(0, 234, 255, 0.08);
+
+    clip-path: polygon(
+        0 18px,
+        18px 0,
+        calc(100% - 18px) 0,
+        100% 18px,
+        100% calc(100% - 18px),
+        calc(100% - 18px) 100%,
+        18px 100%,
+        0 calc(100% - 18px)
+    );
 }
-
-
-/* Gamer top line */
 
 .content-box::before {
     content: "";
-
     position: absolute;
-
     top: 0;
-    left: 0;
-    right: 0;
+    left: 12%;
+    width: 76%;
+    height: 3px;
 
-    height: 5px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--cyan),
+        white,
+        var(--cyan),
+        transparent
+    );
 
-    background:
-        linear-gradient(90deg,
-            var(--cyan),
-            var(--blue),
-            var(--yellow));
+    box-shadow:
+        0 0 10px var(--cyan),
+        0 0 25px var(--cyan);
 }
-
-
-/* Decorative corner */
 
 .content-box::after {
     content: "";
-
     position: absolute;
+    right: 12px;
+    bottom: 12px;
+    width: 35px;
+    height: 3px;
 
-    width: 130px;
-    height: 130px;
-
-    right: -70px;
-    top: -70px;
-
-    border-radius: 50%;
-
-    background: rgba(0, 200, 255, 0.08);
-
-    pointer-events: none;
+    background: var(--yellow);
+    box-shadow: 0 0 10px rgba(255, 233, 0, 0.7);
 }
-
-
-/* Large section */
 
 .content-box.big {
-    max-width: 1000px;
+    width: 1000px;
 }
 
-
-/* =========================
+/* =====================================================
    LOGO
-   ========================= */
+===================================================== */
 
 .logo {
     display: block;
 
-    width: min(280px, 75%);
+    width: 260px;
+    max-width: 80%;
+    height: auto;
 
-    max-height: 140px;
+    margin: 0 auto 35px;
 
     object-fit: contain;
 
-    margin: 0 auto 28px;
-
     filter:
-        drop-shadow(0 8px 15px rgba(0, 111, 255, 0.18));
+        drop-shadow(0 0 5px rgba(255, 255, 255, 0.5))
+        drop-shadow(0 0 20px rgba(0, 234, 255, 0.35));
 
-    transition: transform 0.3s ease;
+    animation: logoPulse 3s ease-in-out infinite;
 }
 
-.logo:hover {
-    transform: scale(1.04);
+@keyframes logoPulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.025);
+    }
 }
 
-
-/* =========================
-   TITLES
-   ========================= */
+/* =====================================================
+   TITULOS
+===================================================== */
 
 h2 {
-    position: relative;
-
-    margin-bottom: 28px;
+    font-family: 'Russo One', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
 
     font-size: clamp(22px, 4vw, 32px);
+    letter-spacing: 1px;
 
-    line-height: 1.2;
+    margin-bottom: 25px;
 
-    color: var(--text);
+    color: var(--white);
 
-    letter-spacing: 0.5px;
+    text-shadow:
+        3px 3px 0 rgba(0, 0, 0, 0.35),
+        0 0 15px rgba(0, 234, 255, 0.35);
 }
 
-h2::after {
-    content: "";
+/* =====================================================
+   TEXTOS
+===================================================== */
 
+p {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.75);
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+
+    margin-bottom: 18px;
+}
+
+#searchingPlayer {
+    color: var(--cyan);
+    font-family: 'Russo One', sans-serif;
+    font-size: 15px;
+
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.6);
+}
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+input[type="text"] {
     display: block;
 
-    width: 55px;
-    height: 4px;
-
-    margin: 12px auto 0;
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(90deg,
-            var(--cyan),
-            var(--blue));
-}
-
-
-/* =========================
-   INPUT
-   ========================= */
-
-#playerID {
     width: 100%;
-
     height: 58px;
 
     padding: 0 20px;
 
-    border: 2px solid var(--border);
-
-    border-radius: 14px;
-
-    background: #f8fbfe;
-
-    color: var(--text);
-
-    font-family: 'Russo One', sans-serif;
-
-    font-size: 15px;
-
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
     outline: none;
 
-    transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
+    background: rgba(0, 0, 50, 0.75);
+    color: var(--white);
+
+    text-align: center;
+
+    font-family: 'Russo One', sans-serif;
+    font-size: 14px;
+
+    transition: 0.25s ease;
 }
 
-#playerID::placeholder {
-    color: #91a3b5;
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
-#playerID:hover {
-    border-color: #b8d7f0;
-}
-
-#playerID:focus {
-    background: #ffffff;
-
-    border-color: var(--blue);
+input[type="text"]:focus {
+    border-color: var(--cyan);
 
     box-shadow:
-        0 0 0 4px rgba(8, 124, 255, 0.10);
+        0 0 0 2px rgba(0, 234, 255, 0.1),
+        0 0 20px rgba(0, 234, 255, 0.3);
 }
 
-
-/* =========================
-   BUTTON
-   ========================= */
+/* =====================================================
+   BOTONES
+===================================================== */
 
 button {
-    width: 100%;
+    position: relative;
 
-    min-height: 56px;
+    width: 100%;
+    height: 55px;
 
     margin-top: 20px;
 
-    padding: 0 25px;
-
     border: none;
-
-    border-radius: 14px;
-
-    background:
-        linear-gradient(135deg,
-            #009cff,
-            #0868e8);
-
-    color: white;
+    cursor: pointer;
+    overflow: hidden;
 
     font-family: 'Russo One', sans-serif;
+    font-size: 15px;
 
-    font-size: 16px;
+    color: #001040;
 
-    letter-spacing: 0.5px;
+    background: linear-gradient(
+        90deg,
+        var(--cyan),
+        #00cfff
+    );
 
-    cursor: pointer;
+    clip-path: polygon(
+        0 0,
+        calc(100% - 12px) 0,
+        100% 12px,
+        100% 100%,
+        12px 100%,
+        0 calc(100% - 12px)
+    );
 
-    box-shadow:
-        0 9px 20px rgba(8, 124, 255, 0.25);
+    box-shadow: 0 0 20px rgba(0, 234, 255, 0.35);
 
     transition:
         transform 0.2s ease,
-        box-shadow 0.2s ease,
-        filter 0.2s ease;
+        box-shadow 0.2s ease;
+}
+
+button::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.4);
+
+    transform: skewX(-25deg);
+    transition: 0.45s ease;
+}
+
+button:hover::before {
+    left: 140%;
 }
 
 button:hover {
     transform: translateY(-3px);
 
-    filter: brightness(1.05);
-
     box-shadow:
-        0 14px 28px rgba(8, 124, 255, 0.30);
+        0 0 15px var(--cyan),
+        0 0 35px rgba(0, 234, 255, 0.3);
 }
 
 button:active {
-    transform: translateY(0) scale(0.98);
+    transform: scale(0.98);
 }
 
-
-/* =========================
-   CARDS GRID
-   ========================= */
+/* =====================================================
+   CARDS - SECCION 2
+===================================================== */
 
 .cards-grid {
-    width: 100%;
-
     display: grid;
 
-    grid-template-columns:
-        repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
 
-    gap: 18px;
+    gap: 16px;
 
-    max-height: 58vh;
+    width: 100%;
 
-    overflow-y: auto;
-
-    padding: 8px 5px 12px;
-
-    scrollbar-width: thin;
-
-    scrollbar-color:
-        var(--blue) #edf4fa;
+    margin: 25px 0;
 }
-
-
-/* Chrome scrollbar */
-
-.cards-grid::-webkit-scrollbar {
-    width: 7px;
-}
-
-.cards-grid::-webkit-scrollbar-track {
-    background: #edf4fa;
-
-    border-radius: 10px;
-}
-
-.cards-grid::-webkit-scrollbar-thumb {
-    background:
-        linear-gradient(var(--cyan),
-            var(--blue));
-
-    border-radius: 10px;
-}
-
-
-/* =========================
-   CARD
-   ========================= */
 
 .card {
     position: relative;
 
     min-width: 0;
-
-    padding: 12px;
-
-    border-radius: 17px;
-
-    background:
-        linear-gradient(145deg,
-            #ffffff,
-            #f2f7fb);
-
-    border: 2px solid #e0eaf2;
-
-    box-shadow:
-        0 7px 18px rgba(40, 85, 120, 0.10);
+    padding: 7px;
 
     cursor: pointer;
 
-    overflow: hidden;
+    background: linear-gradient(
+        145deg,
+        #1111c8,
+        #000064
+    );
+
+    border: 2px solid rgba(255, 255, 255, 0.15);
+
+    clip-path: polygon(
+        0 10px,
+        10px 0,
+        calc(100% - 10px) 0,
+        100% 10px,
+        100% calc(100% - 10px),
+        calc(100% - 10px) 100%,
+        10px 100%,
+        0 calc(100% - 10px)
+    );
 
     transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
-
-
-/* Light reflection */
 
 .card::before {
     content: "";
 
     position: absolute;
+    left: 0;
+    top: 20%;
 
-    top: -50%;
-    left: -80%;
+    width: 3px;
+    height: 60%;
 
-    width: 60%;
-    height: 200%;
+    background: var(--cyan);
+    opacity: 0;
 
-    background:
-        linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.8),
-            transparent);
+    box-shadow: 0 0 10px var(--cyan);
 
-    transform: rotate(20deg);
+    transition: 0.2s;
+}
 
-    transition: left 0.5s ease;
+.card:hover {
+    transform: translateY(-7px);
 
-    pointer-events: none;
+    border-color: var(--cyan);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.4),
+        0 0 18px rgba(0, 234, 255, 0.25);
 }
 
 .card:hover::before {
-    left: 130%;
+    opacity: 1;
 }
-
-
-.card:hover {
-    transform:
-        translateY(-6px) scale(1.025);
-
-    border-color: #8bcaff;
-
-    box-shadow:
-        0 14px 30px rgba(8, 124, 255, 0.16);
-}
-
-
-/* Card image */
 
 .card img {
     display: block;
 
     width: 100%;
-
-    height: auto;
-
-    max-height: 230px;
+    aspect-ratio: 1 / 1;
 
     object-fit: contain;
 
-    border-radius: 11px;
-
-    transition:
-        transform 0.25s ease,
-        filter 0.25s ease;
+    transition: transform 0.2s ease;
 }
 
 .card:hover img {
     transform: scale(1.04);
 }
 
-
-/* =========================
-   SELECTED CARD
-   ========================= */
+/* =====================================================
+   CARD SELECCIONADA
+===================================================== */
 
 .card.selected {
-    border-color: var(--blue);
+    border-color: var(--yellow);
 
-    background:
-        linear-gradient(145deg,
-            #eef8ff,
-            #dff1ff);
+    background: linear-gradient(
+        145deg,
+        #2020ee,
+        #000074
+    );
 
     box-shadow:
-        0 0 0 3px rgba(8, 124, 255, 0.12),
-        0 15px 30px rgba(8, 124, 255, 0.20);
-
-    transform: translateY(-4px);
+        0 0 0 2px rgba(255, 233, 0, 0.15),
+        0 0 25px rgba(255, 233, 0, 0.35);
 }
 
-
-/* Check mark */
+.card.selected::before {
+    background: var(--yellow);
+    box-shadow: 0 0 12px var(--yellow);
+    opacity: 1;
+}
 
 .card.selected::after {
     content: "✓";
 
     position: absolute;
+    top: 7px;
+    right: 7px;
 
-    top: 9px;
-    right: 9px;
-
-    width: 30px;
-    height: 30px;
+    width: 27px;
+    height: 27px;
 
     display: flex;
-
     justify-content: center;
     align-items: center;
 
+    background: var(--yellow);
+    color: var(--blue-dark);
+
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+
     border-radius: 50%;
 
-    background:
-        linear-gradient(135deg,
-            var(--blue),
-            var(--cyan));
-
-    color: white;
-
-    font-size: 17px;
-
-    box-shadow:
-        0 5px 12px rgba(8, 124, 255, 0.25);
-
-    animation: checkPop 0.25s ease;
+    box-shadow: 0 0 10px var(--yellow);
 }
 
-@keyframes checkPop {
-    from {
-        transform: scale(0);
-    }
+/* Texto Coins / GP / ePoints */
 
-    to {
-        transform: scale(1);
-    }
+.card div {
+    font-family: 'Russo One', sans-serif !important;
+    color: var(--yellow) !important;
+
+    text-shadow: 0 0 8px rgba(255, 233, 0, 0.4);
+
+    line-height: 1.3;
 }
 
-
-/* =========================
-   SEARCHING SECTION
-   ========================= */
-
-#searchingPlayer {
-    display: inline-block;
-
-    margin-bottom: 25px;
-
-    padding: 9px 16px;
-
-    border-radius: 10px;
-
-    background: var(--light-blue);
-
-    color: var(--blue);
-
-    font-size: 14px;
-}
-
-
-/* =========================
+/* =====================================================
    SPINNER
-   ========================= */
+===================================================== */
 
 .spinner {
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
 
-    margin: 10px auto 20px;
+    margin: 30px auto;
 
     border-radius: 50%;
 
-    border: 7px solid #dcecf9;
+    border: 5px solid rgba(255, 255, 255, 0.15);
 
-    border-top-color: var(--blue);
+    border-top-color: var(--cyan);
+    border-right-color: white;
 
-    border-right-color: var(--cyan);
+    box-shadow: 0 0 15px rgba(0, 234, 255, 0.4);
 
     animation: spin 0.8s linear infinite;
-
-    box-shadow:
-        0 5px 20px rgba(8, 124, 255, 0.10);
 }
 
 @keyframes spin {
@@ -664,307 +599,251 @@ button:active {
     }
 }
 
-
-/* =========================
-   LOADING TEXT
-   ========================= */
+/* =====================================================
+   LOADING
+===================================================== */
 
 #loadingText {
-    color: var(--text-light);
-
-    font-size: 15px;
-
-    min-height: 20px;
-}
-
-
-/* =========================
-   CONGRATULATIONS
-   ========================= */
-
-#section4 h2 {
-    color: var(--blue);
-}
-
-#section4 .content-box>p {
-    color: var(--text-light);
-
-    font-family: Arial, sans-serif;
-
-    font-size: 15px;
-
-    margin-bottom: 20px;
-}
-
-
-/* Final cards */
-
-#finalCards {
-    max-height: 45vh;
-}
-
-#finalCards .card {
-    cursor: default;
-}
-
-#finalCards .card:hover {
-    transform: translateY(-3px);
-}
-
-
-/* =========================
-   SPECIAL REWARD TEXT
-   ========================= */
-
-.card div {
-    color: var(--yellow) !important;
+    color: var(--cyan);
 
     font-family: 'Russo One', sans-serif;
 
-    text-shadow:
-        0 1px 2px rgba(100, 80, 0, 0.18);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.7);
 }
 
+/* =====================================================
+   CONGRATULATIONS
+===================================================== */
 
-/* =========================
+#section4 h2 {
+    color: var(--yellow);
+
+    text-shadow:
+        0 0 10px rgba(255, 233, 0, 0.7),
+        0 0 25px rgba(255, 233, 0, 0.3);
+}
+
+#section4 .content-box {
+    border-color: rgba(255, 233, 0, 0.35);
+}
+
+/* =====================================================
+   RECOMPENSAS FINALES
+   Separadas de .cards-grid para no deformarlas en PC.
+===================================================== */
+
+#finalCards {
+    display: flex;
+
+    justify-content: center;
+    align-items: stretch;
+
+    flex-wrap: wrap;
+
+    gap: 16px;
+
+    width: 100%;
+    margin: 28px auto;
+}
+
+#finalCards .card {
+    width: 135px;
+    flex: 0 0 135px;
+
+    padding: 7px;
+    min-height: 155px;
+}
+
+#finalCards .card img {
+    display: block;
+
+    width: 100%;
+    height: 135px;
+
+    object-fit: contain;
+}
+
+#finalCards .card div {
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 15px !important;
+    line-height: 1.2;
+
+    margin-top: 6px !important;
+}
+
+#finalCards .card.selected::after {
+    width: 24px;
+    height: 24px;
+
+    top: 5px;
+    right: 5px;
+
+    font-size: 13px;
+}
+
+/* =====================================================
    TABLET
-   ========================= */
+===================================================== */
 
 @media (max-width: 800px) {
 
     .container {
-        padding: 20px;
+        padding: 18px;
     }
 
     .content-box.big {
-        max-width: 700px;
+        padding: 30px 20px;
     }
 
     .cards-grid {
-        grid-template-columns:
-            repeat(4, 1fr);
-
-        gap: 14px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
     }
 
-    .card {
-        padding: 9px;
+    #finalCards {
+        gap: 12px;
     }
 
-    .card img {
-        max-height: 170px;
+    #finalCards .card {
+        width: 115px;
+        flex-basis: 115px;
+    }
+
+    #finalCards .card img {
+        height: 115px;
     }
 }
 
-
-/* =========================
+/* =====================================================
    MOBILE
-   ========================= */
+===================================================== */
 
 @media (max-width: 600px) {
 
     .container {
-        min-height: 100dvh;
-
-        padding:
-            15px;
+        padding: 12px;
     }
 
-    .content-box {
-        padding:
-            34px 18px 24px;
-
-        border-radius: 19px;
+    .section {
+        min-height: 100svh;
     }
 
+    .content-box,
     .content-box.big {
-        padding:
-            30px 12px 20px;
+        padding: 27px 15px;
     }
 
     .logo {
-        width: 230px;
-
-        margin-bottom: 22px;
+        width: 210px;
+        margin-bottom: 27px;
     }
 
     h2 {
         font-size: 21px;
-
-        margin-bottom: 20px;
-    }
-
-    #playerID {
-        height: 54px;
-
-        font-size: 14px;
-    }
-
-    button {
-        min-height: 53px;
-
-        font-size: 15px;
+        margin-bottom: 18px;
     }
 
     .cards-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
-
-        max-height: 62vh;
-
-        padding:
-            5px 3px 10px;
+        margin: 18px 0;
     }
 
     .card {
-        padding: 8px;
-
-        border-radius: 14px;
-    }
-
-    .card img {
-        max-height: none;
-
-        width: 100%;
-    }
-
-    .card.selected::after {
-        width: 25px;
-        height: 25px;
-
-        font-size: 14px;
-
-        top: 6px;
-        right: 6px;
-    }
-
-    .spinner {
-        width: 60px;
-        height: 60px;
-
-        border-width: 6px;
-    }
-}
-
-
-/* =========================
-   SMALL PHONES
-   ========================= */
-
-@media (max-width: 400px) {
-
-    .container {
-        padding: 10px;
-    }
-
-    .content-box {
-        padding:
-            30px 14px 20px;
-    }
-
-    .content-box.big {
-        padding:
-            27px 9px 18px;
-    }
-
-    .logo {
-        width: 200px;
-    }
-
-    h2 {
-        font-size: 19px;
-    }
-
-    .cards-grid {
-        gap: 9px;
-    }
-
-    .card {
-        padding: 6px;
-
-        border-radius: 12px;
-    }
-
-    button {
-        min-height: 50px;
-
-        font-size: 14px;
-    }
-}
-
-
-/* =========================
-   EXTRA SMALL PHONES
-   ========================= */
-
-@media (max-width: 350px) {
-
-    .container {
         padding: 7px;
     }
 
-    .content-box {
-        padding:
-            27px 11px 17px;
+    .card.selected::after {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
     }
 
+    .card div {
+        font-size: 11px !important;
+    }
+
+    button {
+        height: 52px;
+        font-size: 13px;
+    }
+
+    /* Recompensas finales en 2 columnas */
+    #finalCards {
+        display: grid;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+
+        max-width: 330px;
+    }
+
+    #finalCards .card {
+        width: 100%;
+        flex: none;
+        min-height: 0;
+    }
+
+    #finalCards .card img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    #finalCards .card div {
+        font-size: 11px !important;
+    }
+}
+
+/* =====================================================
+   TELEFONOS PEQUEÑOS
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .container {
+        padding: 8px;
+    }
+
+    .content-box,
     .content-box.big {
-        padding:
-            25px 7px 16px;
+        padding: 22px 11px;
+    }
+
+    .logo {
+        width: 175px;
+    }
+
+    h2 {
+        font-size: 18px;
     }
 
     .cards-grid {
-        gap: 7px;
+        gap: 8px;
     }
 
     .card {
         padding: 5px;
     }
 
-    h2 {
-        font-size: 18px;
-    }
-}
-
-
-/* =========================
-   TOUCH DEVICES
-   ========================= */
-
-@media (hover: none) {
-
-    .card:hover {
-        transform: none;
-
-        border-color: #e0eaf2;
-
-        box-shadow:
-            0 7px 18px rgba(40, 85, 120, 0.10);
+    .card div {
+        font-size: 9px !important;
     }
 
-    .card.selected {
-        transform: none;
+    input[type="text"] {
+        height: 50px;
+        font-size: 12px;
     }
 
-    button:hover {
-        transform: none;
-    }
-}
-
-
-/* =========================
-   REDUCED MOTION
-   ========================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+    button {
+        height: 48px;
+        font-size: 11px;
     }
 }
