@@ -610,7 +610,7 @@ button:active {
     }
 
     .card img {
-        height: 82px;
+        height: 100%;
     }
 
     .card > div {
